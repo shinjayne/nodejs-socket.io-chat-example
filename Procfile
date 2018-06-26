@@ -1,1 +1,1 @@
-web: yarn run socket
+web: npm run socket
