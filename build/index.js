@@ -6,7 +6,9 @@ var _socket2 = _interopRequireDefault(_socket);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const io = _socket2.default.listen(50000);
+const port = process.env.PORT || 5000;
+
+const io = _socket2.default.listen(port);
 
 // room number & how many users in there
 const state = {
