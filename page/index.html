@@ -90,14 +90,18 @@
 
         socket = io.connect(serverURL);
 
-        socket.on('connection', function(data) {
-            console.log('connect');
-            if(data.type === 'connected') {
-                socket.emit('connection', {
+        socket.on('approval', function(data) {
+            console.log('approve message arrived from server');
+            if(data.type === 'approve') {
+                console.log('connection is approved');
+
+                socket.emit('room-connect', {
                     type : 'join',
                     name : name,
                     room : room
                 });
+
+                socket.emit('knock');
             }
         });
 
@@ -107,6 +111,10 @@
 
         socket.on('message', function(data) {
             writeMessage('other', data.name, data.message);
+        });
+
+        socket.on('reKnock', function(data) {
+            writeMessage('system', 'system', "현재 접속인원수 : " + data );
         });
 
         $('#message-button').click(function() {

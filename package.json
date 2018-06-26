@@ -4,8 +4,9 @@
   "description": "this is chat example using node.js with socket.io",
   "main": "index.js",
   "scripts": {
-    "socket": "node index.js",
-    "web": "node webserver.js",
+    "build": "./node_modules/.bin/babel src  --out-dir build --copy-files",
+    "socket": "node build/index.js",
+    "web": "node build/webserver.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +28,9 @@
   },
   "homepage": "https://github.com/devjin0617/nodejs-socket.io-chat-example#readme",
   "dependencies": {
+    "all": "^0.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "socket.io": "^1.7.2"
   }
 }

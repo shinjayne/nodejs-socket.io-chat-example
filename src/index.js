@@ -1,13 +1,15 @@
 'use strict';
-const io = require('socket.io').listen(50000);
+import socket_io from 'socket.io' ;
+
+const io = socket_io.listen(50000);
 
 io.sockets.on('connection', socket => {
 
-    socket.emit('connection', {
-        type : 'connected'
+    socket.emit('approval', {
+        type : 'approve'
     });
 
-    socket.on('connection', data => {
+    socket.on('room-connect', data => {
 
         if(data.type === 'join') {
 
