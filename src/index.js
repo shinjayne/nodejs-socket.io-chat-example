@@ -1,7 +1,9 @@
 'use strict';
 import socket_io from 'socket.io' ;
 
-const io = socket_io.listen(50000);
+const port = process.env.PORT || 5000;
+
+const io = socket_io.listen(port);
 
 // room number & how many users in there
 const state = {
